@@ -1,0 +1,50 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<!-- Crea el mapeador -->
+	<bean id="mapeador"
+		class="mx.uam.is.practicadiseno.datos.MapeadorDatosImpl" />
+
+	<!-- Crea el manejador -->
+	<bean id="manejador"
+		class="mx.uam.is.practicadiseno.negocio.ManejadorImpl">
+		<constructor-arg>
+			<ref bean="mapeador" />
+		</constructor-arg>
+	</bean>
+
+	<!-- Crea el manejadorProxy -->
+	<bean id="manejadorProxy"
+		class="mx.uam.is.practicadiseno.negocio.ManejadorProxy">
+		<constructor-arg>
+			<ref bean="manejador" />
+		</constructor-arg>
+	</bean>
+
+	<!-- Crea las ventanas -->
+	<bean id="ventana" class="mx.uam.is.practicadiseno.vista.Ventana">
+		<!-- agregar referencia al manejador aqui -->
+		<constructor-arg>
+			<ref bean="manejadorProxy" />
+		</constructor-arg>
+		<property name="visible" value="true" />
+	</bean>
+
+	<bean id="ventana2" class="mx.uam.is.practicadiseno.vista.Ventana">
+		<!-- agregar referencia al manejador aqui -->
+		<constructor-arg>
+			<ref bean="manejadorProxy" />
+		</constructor-arg>
+		<property name="visible" value="true" />
+	</bean>
+
+	<bean id="ventana3" class="mx.uam.is.practicadiseno.vista.Ventana">
+		<!-- agregar referencia al manejador aqui -->
+		<constructor-arg>
+			<ref bean="manejadorProxy" />
+		</constructor-arg>
+		<property name="visible" value="true" />
+	</bean>
+
+</beans>
